@@ -57,6 +57,19 @@ return packer.startup(function(use)
   -- 上一次打开的文件位置
   use "ethanholz/nvim-lastplace"
 
+  -- session
+  use {
+    "folke/persistence.nvim",
+    event = "BufReadPre", -- this will only start session saving when an actual file was opened
+    module = "persistence",
+    config = function()
+      require("persistence").setup {
+        dir = vim.fn.expand(vim.fn.stdpath "config" .. "/session/"),
+        options = { "buffers", "curdir", "tabpages", "winsize" },
+      }
+    end,
+  }
+
   -- Colorschemes
   use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use 'folke/tokyonight.nvim' -- 经典主题
@@ -67,7 +80,6 @@ return packer.startup(function(use)
   })
   use "tomasr/molokai" -- molokai
   use "morhetz/gruvbox" -- gruvbox
-  
 
   -- completion
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -106,6 +118,20 @@ return packer.startup(function(use)
   use "kosayoda/nvim-lightbulb" -- code action 会有💡提示
   use "antoinemadec/FixCursorHold.nvim" -- nvim-lightbulb 的依赖
 
+  -- Rename
+  -- use {
+  --   'filipdutescu/renamer.nvim',
+  --   branch = 'master',
+  --   requires = { { 'nvim-lua/plenary.nvim' } }
+  -- }
+  -- Better quickfix window
+  use { 'kevinhwang91/nvim-bqf' }
+  --optional
+  use { 'junegunn/fzf', run = function()
+    vim.fn['fzf#install']()
+  end
+  }
+
   -- tabout
   use "abecodes/tabout.nvim"
 
@@ -143,11 +169,11 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope-ui-select.nvim"
   use {
     'nvim-telescope/telescope-fzf-native.nvim',
-     run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   }
   use {
     requires = { "nvim-treesitter/nvim-treesitter" },
-    "Badhi/nvim-treesitter-cpp-tools",  -- 提供函数定义代码生成功能
+    "Badhi/nvim-treesitter-cpp-tools", -- 提供函数定义代码生成功能
   }
 
   -- Treesitter
@@ -156,6 +182,8 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
   use 'JoosepAlviste/nvim-ts-context-commentstring' -- JS 注释
+
+  use "romgrk/nvim-treesitter-context" -- 当函数代码太长，在屏幕顶部显示函数名称
 
   -- Bufferline
   use "akinsho/bufferline.nvim"
@@ -179,8 +207,14 @@ return packer.startup(function(use)
   -- Terminal
   use "akinsho/toggleterm.nvim"
 
+  -- beautiful notify
+  use "rcarriga/nvim-notify"
+
   -- 翻译
-  use "voldikss/vim-translator"
+  -- use "voldikss/vim-translator"
+
+  -- smooth scrolling
+  -- use 'karb94/neoscroll.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

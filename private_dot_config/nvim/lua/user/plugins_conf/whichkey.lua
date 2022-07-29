@@ -224,6 +224,13 @@ local normal_mappings = {
     g = { "<cmd>Gitsigns setloclist<cr>", "Open changed hunk" },
   },
 
+  S = {
+    name = "Session",
+    c = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
+    l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
+    Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
+  },
+
   ["O"] = { "<cmd>SymbolsOutline<cr>", "Outline" },
 
   --[[

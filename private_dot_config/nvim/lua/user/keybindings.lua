@@ -79,3 +79,9 @@ keymap("t", "<A-l>", "<C-\\><C-N><C-w>l", term_opt)
 -- keymap("n", "<leader>U", ":lua require('user.utils').GtagsRefernce()<cr>", opt)
 -- find definition
 -- keymap("n", "<leader>T", ":lua require('user.utils').GtagsText()<cr>", opt)
+--
+
+-- renamer keymap
+vim.api.nvim_set_keymap('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
