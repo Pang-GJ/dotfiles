@@ -157,3 +157,7 @@ if [[ "$(command -v exa)" ]]; then
 fi
 
 eval "$(zoxide init zsh)"
+
+source /home/pgj/.config/broot/launcher/bash/br
+
+eval $(thefuck --alias)
