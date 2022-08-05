@@ -161,3 +161,7 @@ eval "$(zoxide init zsh)"
 source ~/.config/broot/launcher/bash/br
 
 eval $(thefuck --alias)
+
+# default C++ compiler: clang
+export CC=clang
+export CXX=clang++
