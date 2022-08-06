@@ -165,3 +165,6 @@ eval $(thefuck --alias)
 # default C++ compiler: clang
 export CC=clang
 export CXX=clang++
+
+# enable conda for current user 
+source /opt/miniconda/etc/profile.d/conda.sh
