@@ -168,3 +168,32 @@ export CXX=clang++
 
 # enable conda for current user 
 source /opt/miniconda/etc/profile.d/conda.sh
+
+function taskpp() {
+  case "$1" in 
+    "new")
+      git clone https://github.com/Pang-GJ/cpp-project-template.git
+      mv cpp-project-template $2 && cd $2
+      rm -rf .git
+      git init .
+      git add .
+      git commit -m "Init C++ project"
+      git branch -m main
+      cd ..
+      ;;
+    "build")
+      cmake -S . -B build
+      cmake --build build
+      ;;
+    "test")
+      cmake -S . -B build -DBUILD_TESTS=on
+      cmake --build build --target $1
+      ;;
+    "format")
+      cmake --build build --target clangformat
+      ;;
+    "tidy")
+      cmake --build build --target clangtidy
+      ;;
+  esac 
+}
