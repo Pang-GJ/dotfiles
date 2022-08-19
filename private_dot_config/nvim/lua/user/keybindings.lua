@@ -85,3 +85,17 @@ keymap("t", "<A-l>", "<C-\\><C-N><C-w>l", term_opt)
 vim.api.nvim_set_keymap('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+
+-- debug
+-- debug
+keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint(); require'user.dap.dap-util'.store_breakpoints(true)<cr>", opt)
+keymap("n", "<leader>dB", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", opt)
+-- keymap("n", "<leader>dr", "lua require'dap'.repl.open()<cr>", opts)
+keymap("n", "<F9>", "<cmd>lua require'dap'.run_last()<cr>", opt)
+keymap('n', '<F10>', '<cmd>lua require"user.dap.dap-util".reload_continue()<CR>', opt)
+keymap("n", "<F4>", "<cmd>lua require'dap'.terminate()<cr>", opt)
+keymap("n", "<F5>", "<cmd>lua require'dap'.continue()<cr>", opt)
+keymap("n", "<F6>", "<cmd>lua require'dap'.step_over()<cr>", opt)
+keymap("n", "<F7>", "<cmd>lua require'dap'.step_into()<cr>", opt)
+keymap("n", "<F8>", "<cmd>lua require'dap'.step_out()<cr>", opt)
+keymap("n", "K", "<cmd>lua require'dapui'.eval()<cr>", opt)

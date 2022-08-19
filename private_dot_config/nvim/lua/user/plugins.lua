@@ -80,6 +80,7 @@ return packer.startup(function(use)
   })
   use "tomasr/molokai" -- molokai
   use "morhetz/gruvbox" -- gruvbox
+  use 'tanvirtin/monokai.nvim' -- monokai
 
   -- completion
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -117,6 +118,11 @@ return packer.startup(function(use)
   use "ray-x/lsp_signature.nvim"
   use "kosayoda/nvim-lightbulb" -- code action 会有💡提示
   use "antoinemadec/FixCursorHold.nvim" -- nvim-lightbulb 的依赖
+
+  -- use {
+  --   "tenfyzhong/vim-gencode-cpp",
+  --   requires = "vim-scripts/a.vim",
+  -- }
 
   -- Rename
   -- use {
@@ -158,6 +164,9 @@ return packer.startup(function(use)
     "sakhnik/nvim-gdb",
     run = "./install.sh"
   }
+  use 'mfussenegger/nvim-dap'
+  use 'rcarriga/nvim-dap-ui'
+  use 'theHamsta/nvim-dap-virtual-text'
 
   -- Outline
   --use "stevearc/aerial.nvim"
@@ -174,6 +183,12 @@ return packer.startup(function(use)
   use {
     requires = { "nvim-treesitter/nvim-treesitter" },
     "Badhi/nvim-treesitter-cpp-tools", -- 提供函数定义代码生成功能
+  }
+
+  -- Todo comments 
+  use {
+  "folke/todo-comments.nvim",
+  requires = "nvim-lua/plenary.nvim",
   }
 
   -- Treesitter

@@ -40,3 +40,5 @@ require "user.plugins_conf.nvim-bqf"
 -- require "user.plugins_conf.renamer"
 
 -- require "user.plugins_conf.neoscroll"
+--
+require "user.plugins_conf.todo-comments"
