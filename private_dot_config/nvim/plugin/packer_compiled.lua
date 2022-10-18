@@ -9,23 +9,26 @@ vim.api.nvim_command('packadd packer.nvim')
 
 local no_errors, error_msg = pcall(function()
 
-  local time
-  local profile_info
-  local should_profile = false
-  if should_profile then
-    local hrtime = vim.loop.hrtime
-    profile_info = {}
-    time = function(chunk, start)
-      if start then
-        profile_info[chunk] = hrtime()
-      else
-        profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
-      end
+_G._packer = _G._packer or {}
+_G._packer.inside_compile = true
+
+local time
+local profile_info
+local should_profile = false
+if should_profile then
+  local hrtime = vim.loop.hrtime
+  profile_info = {}
+  time = function(chunk, start)
+    if start then
+      profile_info[chunk] = hrtime()
+    else
+      profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
     end
-  else
-    time = function(chunk, start) end
   end
-  
+else
+  time = function(chunk, start) end
+end
+
 local function save_profiles(threshold)
   local sorted_times = {}
   for chunk_name, time_taken in pairs(profile_info) do
@@ -38,8 +41,10 @@ local function save_profiles(threshold)
       results[i] = elem[1] .. ' took ' .. elem[2] .. 'ms'
     end
   end
+  if threshold then
+    table.insert(results, '(Only showing plugins that took longer than ' .. threshold .. ' ms ' .. 'to load)')
+  end
 
-  _G._packer = _G._packer or {}
   _G._packer.profile_output = results
 end
 
@@ -99,11 +104,6 @@ _G.packer_plugins = {
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
-  catppuccin = {
-    loaded = true,
-    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/catppuccin",
-    url = "https://github.com/catppuccin/nvim"
-  },
   ["clangd_extensions.nvim"] = {
     loaded = true,
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/clangd_extensions.nvim",
@@ -149,6 +149,11 @@ _G.packer_plugins = {
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
     url = "https://github.com/lunarvim/darkplus.nvim"
   },
+  firenvim = {
+    loaded = true,
+    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/firenvim",
+    url = "https://github.com/glacambre/firenvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -164,10 +169,16 @@ _G.packer_plugins = {
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  gruvbox = {
+  ["gitui.nvim"] = {
+    config = { "\27LJ\2\n3\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\ngitui\frequire\0" },
     loaded = true,
-    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/gruvbox",
-    url = "https://github.com/morhetz/gruvbox"
+    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/gitui.nvim",
+    url = "https://github.com/aspeddro/gitui.nvim"
+  },
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
   ["hop.nvim"] = {
     loaded = true,
@@ -183,6 +194,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
+  ["lsp-colors.nvim"] = {
+    loaded = true,
+    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/lsp-colors.nvim",
+    url = "https://github.com/folke/lsp-colors.nvim"
   },
   ["lsp_signature.nvim"] = {
     loaded = true,
@@ -249,11 +265,6 @@ _G.packer_plugins = {
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/nvim-lastplace",
     url = "https://github.com/ethanholz/nvim-lastplace"
   },
-  ["nvim-lightbulb"] = {
-    loaded = true,
-    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/nvim-lightbulb",
-    url = "https://github.com/kosayoda/nvim-lightbulb"
-  },
   ["nvim-lsp-installer"] = {
     loaded = true,
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
@@ -309,13 +320,11 @@ _G.packer_plugins = {
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
-  ["persistence.nvim"] = {
-    config = { "\27LJ\2\nÏ\1\0\0\b\0\r\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\t\0006\3\3\0009\3\4\0039\3\5\0036\5\3\0009\5\4\0059\5\6\5'\a\a\0B\5\2\2'\6\b\0&\5\6\5B\3\2\2=\3\n\0025\3\v\0=\3\f\2B\0\2\1K\0\1\0\foptions\1\5\0\0\fbuffers\vcurdir\rtabpages\fwinsize\bdir\1\0\0\14/session/\vconfig\fstdpath\vexpand\afn\bvim\nsetup\16persistence\frequire\0" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/pgj/.local/share/nvim/site/pack/packer/opt/persistence.nvim",
-    url = "https://github.com/folke/persistence.nvim"
+  ["persisted.nvim"] = {
+    config = { "\27LJ\2\nh\0\0\3\0\5\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0'\2\1\0B\0\2\1K\0\1\0\19load_extension\14telescope\nsetup\14persisted\frequire\0" },
+    loaded = true,
+    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/persisted.nvim",
+    url = "https://github.com/olimorris/persisted.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -331,11 +340,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/project.nvim",
     url = "https://github.com/ahmedkhalf/project.nvim"
-  },
-  sniprun = {
-    loaded = true,
-    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/sniprun",
-    url = "https://github.com/michaelb/sniprun"
   },
   ["symbols-outline.nvim"] = {
     loaded = true,
@@ -405,41 +409,21 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
-local module_lazy_loads = {
-  ["^persistence"] = "persistence.nvim"
-}
-local lazy_load_called = {['packer.load'] = true}
-local function lazy_load_module(module_name)
-  local to_load = {}
-  if lazy_load_called[module_name] then return nil end
-  lazy_load_called[module_name] = true
-  for module_pat, plugin_name in pairs(module_lazy_loads) do
-    if not _G.packer_plugins[plugin_name].loaded and string.match(module_name, module_pat) then
-      to_load[#to_load + 1] = plugin_name
-    end
-  end
+-- Config for: gitui.nvim
+time([[Config for gitui.nvim]], true)
+try_loadstring("\27LJ\2\n3\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\ngitui\frequire\0", "config", "gitui.nvim")
+time([[Config for gitui.nvim]], false)
+-- Config for: persisted.nvim
+time([[Config for persisted.nvim]], true)
+try_loadstring("\27LJ\2\nh\0\0\3\0\5\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0'\2\1\0B\0\2\1K\0\1\0\19load_extension\14telescope\nsetup\14persisted\frequire\0", "config", "persisted.nvim")
+time([[Config for persisted.nvim]], false)
 
-  if #to_load > 0 then
-    require('packer.load')(to_load, {module = module_name}, _G.packer_plugins)
-    local loaded_mod = package.loaded[module_name]
-    if loaded_mod then
-      return function(modname) return loaded_mod end
-    end
-  end
+_G._packer.inside_compile = false
+if _G._packer.needs_bufread == true then
+  vim.cmd("doautocmd BufRead")
 end
+_G._packer.needs_bufread = false
 
-if not vim.g.packer_custom_loader_enabled then
-  table.insert(package.loaders, 1, lazy_load_module)
-  vim.g.packer_custom_loader_enabled = true
-end
-
-vim.cmd [[augroup packer_load_aucmds]]
-vim.cmd [[au!]]
-  -- Event lazy-loads
-time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'persistence.nvim'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
-time([[Defining lazy-load event autocommands]], false)
-vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)

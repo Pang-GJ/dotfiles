@@ -60,13 +60,13 @@ vim.g.nvim_tree_icons = {
      symlink = "",
    },
  }
- 
+
  local status_ok, nvim_tree = pcall(require, "nvim-tree")
  if not status_ok then
    vim.notify("nvim-tree not found!")
    return
  end
- 
+
  nvim_tree.setup({
    auto_reload_on_write = true,
    disable_netrw = false,
@@ -185,13 +185,13 @@ vim.g.nvim_tree_icons = {
    },
  }
  )
- 
+
  --
  -- with relative path
  require "nvim-tree.events".on_file_created(function(file) vim.cmd("edit " .. file.fname) end)
  -- with absolute path
  -- require"nvim-tree.events".on_file_created(function(file) vim.cmd("edit "..vim.fn.fnamemodify(file.fname, ":p")) end)
- 
+
  -- auto close feature
  -- vim.cmd(
  --   [[

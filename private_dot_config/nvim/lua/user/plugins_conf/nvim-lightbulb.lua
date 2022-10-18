@@ -11,10 +11,10 @@ lightbulb.setup {
     sign = {
         enabled = true,
         -- Priority of the gutter sign
-        priority = 10,
+        priority = 1,
     },
     float = {
-        enabled = false,
+        enabled = true,
         -- Text to show in the popup float
         text = "💡",
         -- Available keys for window options:
@@ -41,7 +41,7 @@ lightbulb.setup {
         hl_mode = "replace",
     },
     status_text = {
-        enabled = true,
+        enabled = false,
         -- Text to provide when code actions are available
         text = "💡",
         -- Text to provide when no actions are available

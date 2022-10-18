@@ -58,28 +58,33 @@ return packer.startup(function(use)
   use "ethanholz/nvim-lastplace"
 
   -- session
-  use {
-    "folke/persistence.nvim",
-    event = "BufReadPre", -- this will only start session saving when an actual file was opened
-    module = "persistence",
-    config = function()
-      require("persistence").setup {
-        dir = vim.fn.expand(vim.fn.stdpath "config" .. "/session/"),
-        options = { "buffers", "curdir", "tabpages", "winsize" },
-      }
-    end,
-  }
+  --[[ use { ]]
+  --[[   "folke/persistence.nvim", ]]
+  --[[   event = "BufReadPre", -- this will only start session saving when an actual file was opened ]]
+  --[[   module = "persistence", ]]
+  --[[   config = function() ]]
+  --[[     require("persistence").setup { ]]
+  --[[       dir = vim.fn.expand(vim.fn.stdpath "config" .. "/session/"), ]]
+  --[[       options = { "buffers", "curdir", "tabpages", "winsize" }, ]]
+  --[[     } ]]
+  --[[   end, ]]
+  --[[ } ]]
+  use({
+  "olimorris/persisted.nvim",
+  --module = "persisted", -- For lazy loading
+  config = function()
+    require("persisted").setup()
+    require("telescope").load_extension("persisted") -- To load the telescope extension
+  end,
+  })
 
   -- Colorschemes
   use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use 'folke/tokyonight.nvim' -- 经典主题
   use "lunarvim/darkplus.nvim"
-  use({
-    "catppuccin/nvim",
-    as = "catppuccin"
-  })
   use "tomasr/molokai" -- molokai
-  use "morhetz/gruvbox" -- gruvbox
+  -- use "morhetz/gruvbox" -- gruvbox
+  use "ellisonleao/gruvbox.nvim" --gruvbox
   use 'tanvirtin/monokai.nvim' -- monokai
 
   -- completion
@@ -116,8 +121,9 @@ return packer.startup(function(use)
 
   use "p00f/clangd_extensions.nvim" -- 不知道好不好用，尝试一下
   use "ray-x/lsp_signature.nvim"
-  use "kosayoda/nvim-lightbulb" -- code action 会有💡提示
+  -- use "kosayoda/nvim-lightbulb" -- code action 会有💡提示
   use "antoinemadec/FixCursorHold.nvim" -- nvim-lightbulb 的依赖
+  use "folke/lsp-colors.nvim" -- 提示（错误提示、灯泡提示）
 
   -- use {
   --   "tenfyzhong/vim-gencode-cpp",
@@ -142,7 +148,7 @@ return packer.startup(function(use)
   use "abecodes/tabout.nvim"
 
   -- 运行代码段
-  use { "michaelb/sniprun", run = "zsh ./install.sh" }
+  --[[ use { "michaelb/sniprun", run = "zsh ./install.sh" } ]]
 
   -- waketime
   use "wakatime/vim-wakatime"
@@ -155,7 +161,7 @@ return packer.startup(function(use)
   --]]
 
   --CMake
-  --use "Shatur/neovim-cmake"
+  --[[ use "ravenxrz/neovim-cmake" ]]
   --gtags
   --use "jsfaint/gen_tags.vim"
 
@@ -170,7 +176,7 @@ return packer.startup(function(use)
 
   -- Outline
   --use "stevearc/aerial.nvim"
-  use "simrat39/symbols-outline.nvim" -- tree-like symbol outline
+    use "simrat39/symbols-outline.nvim" -- tree-like symbol outline
   --use "liuchengxu/vista.vim"
 
   -- Telescope
@@ -185,10 +191,10 @@ return packer.startup(function(use)
     "Badhi/nvim-treesitter-cpp-tools", -- 提供函数定义代码生成功能
   }
 
-  -- Todo comments 
+  -- Todo comments
   use {
-  "folke/todo-comments.nvim",
-  requires = "nvim-lua/plenary.nvim",
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
   }
 
   -- Treesitter
@@ -209,6 +215,15 @@ return packer.startup(function(use)
 
   -- Git
   use "lewis6991/gitsigns.nvim"
+  -- gitui
+  -- use "is0n/fm-nvim" -- bad, it's slow
+  use {
+    "aspeddro/gitui.nvim",
+    config = function()
+      require("gitui").setup()
+    end,
+  }
+
 
   -- 底部状态栏
   use 'nvim-lualine/lualine.nvim'
@@ -224,6 +239,12 @@ return packer.startup(function(use)
 
   -- beautiful notify
   use "rcarriga/nvim-notify"
+
+  -- turn you browser to neovim
+  use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end
+  }
 
   -- 翻译
   -- use "voldikss/vim-translator"

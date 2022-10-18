@@ -19,7 +19,12 @@ a	Code actions
 ?	Show help message
 --]]
 
-vim.g.symbols_outline = {
+local ok, outline = pcall(require, "symbols-outline")
+if not ok then
+  return
+end
+
+local opts = {
   highlight_hovered_item = true,
   show_guides = true,
   auto_preview = false,
@@ -71,3 +76,5 @@ vim.g.symbols_outline = {
       TypeParameter = {icon = "𝙏", hl = "TSParameter"}
   }
 }
+
+outline.setup({opts})

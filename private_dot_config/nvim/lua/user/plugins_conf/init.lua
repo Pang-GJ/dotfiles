@@ -27,7 +27,7 @@ require "user.plugins_conf.nvim-gdb"
 require "user.plugins_conf.sniprun"
 
 -- require "user.plugins_conf.gen_tags"
--- require "user.plugins_conf.neovim-cmake"
+--[[ require "user.plugins_conf.neovim-cmake" ]]
 
 -- require "user.plugins_conf.vista"
 

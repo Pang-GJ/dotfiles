@@ -129,6 +129,7 @@ local normal_mappings = {
 
   g = {
     name = "Git",
+    G = { "<cmd>lua require('gitui').open()<CR>", "Gitui" },
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
     j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
     k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
@@ -226,9 +227,16 @@ local normal_mappings = {
 
   S = {
     name = "Session",
-    c = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
-    l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
-    Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
+    t = { "<cmd>SessionToggle<cr>", "Session Toggle" },
+    w = { "<cmd>SessionSave<cr>", "Session Save" },
+    s = { "<cmd>Telescope persisted<cr>", "Search Session" },
+    q = { "<cmd>SessionStop<cr>", "Session Stop" },
+    c = { "<cmd>SessionLoad<cr>", "Load session for current dir" },
+    l = { "<cmd>SessionLoadLast<cr>", "Load last session" },
+    d = { "<cmd>SessionDelete<cr>", "Delete current session" },
+    --c = { "<cmd>lua require('persistence').load()<cr>", "Restore last session for current dir" },
+    --l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
+    --Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
   },
 
   ["O"] = { "<cmd>SymbolsOutline<cr>", "Outline" },

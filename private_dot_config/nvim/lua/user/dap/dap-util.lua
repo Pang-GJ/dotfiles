@@ -1,5 +1,5 @@
 local M = {}
-local dap = require 'dap'
+local dap = require("dap")
 
 -- refresh config
 M.reload_continue = function()
