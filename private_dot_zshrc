@@ -144,7 +144,6 @@ unset key
 unset MANPATH
 
 export PATH=$PATH:$HOME/.local/bin/:$HOME/bin:/usr/lib/
-# alias dotfiles="/usr/bin/env git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 #
 # use exa instead of ls
 if [[ "$(command -v exa)" ]]; then
@@ -152,8 +151,8 @@ if [[ "$(command -v exa)" ]]; then
   unalias -m 'l'
   unalias -m 'la'
   unalias -m 'ls'
-  alias ls='exa -G --color auto --icons -a -s type'
-  alias ll='exa -l --color always --icons -a -s type'
+  alias ls='exa -G --color auto --icons -s type'
+  alias ll='exa -l --color always --icons -s type'
 fi
 
 eval "$(zoxide init zsh)"
