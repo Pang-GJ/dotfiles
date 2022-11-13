@@ -182,7 +182,7 @@ function taskpp() {
       ;;
     "build")
       cmake -S . -B build
-      cmake --build build
+      cmake --build build -j12
       ;;
     "test")
       cmake -S . -B build -DBUILD_TESTS=on
