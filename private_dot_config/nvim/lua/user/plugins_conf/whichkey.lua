@@ -96,18 +96,6 @@ local normal_mappings = {
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
 
-  --[[
-  p = {
-    name = "Packer",
-    c = { "<cmd>PackerCompile<cr>", "Compile" },
-    i = { "<cmd>PackerInstall<cr>", "Install" },
-    s = { "<cmd>PackerSync<cr>", "Sync" },
-    S = { "<cmd>PackerStatus<cr>", "Status" },
-    u = { "<cmd>PackerUpdate<cr>", "Update" },
-  },
-  --]]
-
-  --[[
   C = {
     name = "CMake",
     g = {"<cmd>CMake configure<CR>", "Configure"},
@@ -120,7 +108,6 @@ local normal_mappings = {
     c = {"<cmd>CMake cancel<CR>", "Cancel"},
     s = {"<cmd>CMake set_target_args<CR>", "SetArg"},
   },
-  --]]
 
   d = {
     name = "Debugger",
@@ -167,7 +154,8 @@ local normal_mappings = {
 
   l = {
     name = "LSP",
-    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+    --[[ a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" }, ]]
+    a = { "<cmd>CodeActionMenu<cr>", "Code Action" },
     d = {
       "<cmd>Telescope lsp_document_diagnostics<cr>",
       "Document Diagnostics",

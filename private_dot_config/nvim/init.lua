@@ -17,6 +17,7 @@ require "user.plugins_conf.impatient" -- 改善nvovim启动时间，需要放在
 require "user.options"
 require "user.keybindings"
 require "user.colorscheme"
+
 require "user.lsp"
 
 require "user.dap"

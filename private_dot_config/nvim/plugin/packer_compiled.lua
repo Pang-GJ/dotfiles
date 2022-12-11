@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/clangd_extensions.nvim",
     url = "https://github.com/p00f/clangd_extensions.nvim"
   },
+  ["cmake-tools.nvim"] = {
+    loaded = true,
+    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/cmake-tools.nvim",
+    url = "https://github.com/Civitasv/cmake-tools.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -139,20 +144,13 @@ _G.packer_plugins = {
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  colorschemes = {
-    loaded = true,
-    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/colorschemes",
-    url = "https://github.com/lunarvim/colorschemes"
-  },
-  ["darkplus.nvim"] = {
-    loaded = true,
-    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
-    url = "https://github.com/lunarvim/darkplus.nvim"
-  },
-  firenvim = {
-    loaded = true,
-    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/firenvim",
-    url = "https://github.com/glacambre/firenvim"
+  ["cppassist.nvim"] = {
+    config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14cppassist\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/pgj/.local/share/nvim/site/pack/packer/opt/cppassist.nvim",
+    url = "https://github.com/Kohirus/cppassist.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -220,10 +218,10 @@ _G.packer_plugins = {
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/monokai.nvim",
     url = "https://github.com/tanvirtin/monokai.nvim"
   },
-  ["null-ls.nvim"] = {
+  ["neoscroll.nvim"] = {
     loaded = true,
-    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
-    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
+    url = "https://github.com/karb94/neoscroll.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -239,6 +237,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-code-action-menu"] = {
+    commands = { "CodeActionMenu" },
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/home/pgj/.local/share/nvim/site/pack/packer/opt/nvim-code-action-menu",
+    url = "https://github.com/weilbith/nvim-code-action-menu"
   },
   ["nvim-dap"] = {
     loaded = true,
@@ -265,6 +271,11 @@ _G.packer_plugins = {
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/nvim-lastplace",
     url = "https://github.com/ethanholz/nvim-lastplace"
   },
+  ["nvim-lightbulb"] = {
+    loaded = true,
+    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/nvim-lightbulb",
+    url = "https://github.com/kosayoda/nvim-lightbulb"
+  },
   ["nvim-lsp-installer"] = {
     loaded = true,
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
@@ -274,6 +285,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-markdown-preview"] = {
+    loaded = true,
+    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/nvim-markdown-preview",
+    url = "https://github.com/davidgranstrom/nvim-markdown-preview"
   },
   ["nvim-notify"] = {
     loaded = true,
@@ -315,6 +331,11 @@ _G.packer_plugins = {
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
+  ["onedark.nvim"] = {
+    loaded = true,
+    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/onedark.nvim",
+    url = "https://github.com/navarasu/onedark.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -322,8 +343,10 @@ _G.packer_plugins = {
   },
   ["persisted.nvim"] = {
     config = { "\27LJ\2\nh\0\0\3\0\5\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0'\2\1\0B\0\2\1K\0\1\0\19load_extension\14telescope\nsetup\14persisted\frequire\0" },
-    loaded = true,
-    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/persisted.nvim",
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/pgj/.local/share/nvim/site/pack/packer/opt/persisted.nvim",
     url = "https://github.com/olimorris/persisted.nvim"
   },
   ["plenary.nvim"] = {
@@ -340,6 +363,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/pgj/.local/share/nvim/site/pack/packer/start/project.nvim",
     url = "https://github.com/ahmedkhalf/project.nvim"
+  },
+  sniprun = {
+    loaded = true,
+    path = "/home/pgj/.local/share/nvim/site/pack/packer/start/sniprun",
+    url = "https://github.com/michaelb/sniprun"
   },
   ["symbols-outline.nvim"] = {
     loaded = true,
@@ -409,14 +437,62 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+local module_lazy_loads = {
+  ["^persisted"] = "persisted.nvim"
+}
+local lazy_load_called = {['packer.load'] = true}
+local function lazy_load_module(module_name)
+  local to_load = {}
+  if lazy_load_called[module_name] then return nil end
+  lazy_load_called[module_name] = true
+  for module_pat, plugin_name in pairs(module_lazy_loads) do
+    if not _G.packer_plugins[plugin_name].loaded and string.match(module_name, module_pat) then
+      to_load[#to_load + 1] = plugin_name
+    end
+  end
+
+  if #to_load > 0 then
+    require('packer.load')(to_load, {module = module_name}, _G.packer_plugins)
+    local loaded_mod = package.loaded[module_name]
+    if loaded_mod then
+      return function(modname) return loaded_mod end
+    end
+  end
+end
+
+if not vim.g.packer_custom_loader_enabled then
+  table.insert(package.loaders, 1, lazy_load_module)
+  vim.g.packer_custom_loader_enabled = true
+end
+
 -- Config for: gitui.nvim
 time([[Config for gitui.nvim]], true)
 try_loadstring("\27LJ\2\n3\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\ngitui\frequire\0", "config", "gitui.nvim")
 time([[Config for gitui.nvim]], false)
--- Config for: persisted.nvim
-time([[Config for persisted.nvim]], true)
-try_loadstring("\27LJ\2\nh\0\0\3\0\5\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0'\2\1\0B\0\2\1K\0\1\0\19load_extension\14telescope\nsetup\14persisted\frequire\0", "config", "persisted.nvim")
-time([[Config for persisted.nvim]], false)
+
+-- Command lazy-loads
+time([[Defining lazy-load commands]], true)
+pcall(vim.api.nvim_create_user_command, 'CodeActionMenu', function(cmdargs)
+          require('packer.load')({'nvim-code-action-menu'}, { cmd = 'CodeActionMenu', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-code-action-menu'}, { cmd = 'CodeActionMenu' }, _G.packer_plugins)
+          return vim.fn.getcompletion('CodeActionMenu ', 'cmdline')
+      end})
+time([[Defining lazy-load commands]], false)
+
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType cc ++once lua require("packer.load")({'cppassist.nvim'}, { ft = "cc" }, _G.packer_plugins)]]
+vim.cmd [[au FileType h ++once lua require("packer.load")({'cppassist.nvim'}, { ft = "h" }, _G.packer_plugins)]]
+vim.cmd [[au FileType hpp ++once lua require("packer.load")({'cppassist.nvim'}, { ft = "hpp" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cpp ++once lua require("packer.load")({'cppassist.nvim'}, { ft = "cpp" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cxx ++once lua require("packer.load")({'cppassist.nvim'}, { ft = "cxx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType c ++once lua require("packer.load")({'cppassist.nvim'}, { ft = "c" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

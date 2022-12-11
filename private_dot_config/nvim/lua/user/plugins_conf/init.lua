@@ -21,13 +21,14 @@ require "user.plugins_conf.nvim-lastplace"
 require "user.plugins_conf.nvim-spectre"
 require "user.plugins_conf.autosave"
 require "user.plugins_conf.hop"
--- require "user.plugins_conf.aerial"
 require "user.plugins_conf.nvim-gdb"
 
 require "user.plugins_conf.sniprun"
 
 -- require "user.plugins_conf.gen_tags"
 --[[ require "user.plugins_conf.neovim-cmake" ]]
+
+require "user.plugins_conf.cmake-tools"
 
 -- require "user.plugins_conf.vista"
 
@@ -39,6 +40,10 @@ require "user.plugins_conf.nvim-bqf"
 
 -- require "user.plugins_conf.renamer"
 
--- require "user.plugins_conf.neoscroll"
+require "user.plugins_conf.neoscroll"
 --
 require "user.plugins_conf.todo-comments"
+
+require "user.plugins_conf.nvim-lightbulb"
+
+require "user.plugins_conf.nvim-web-devicons"

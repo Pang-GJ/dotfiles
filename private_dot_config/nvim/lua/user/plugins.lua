@@ -70,22 +70,22 @@ return packer.startup(function(use)
   --[[   end, ]]
   --[[ } ]]
   use({
-  "olimorris/persisted.nvim",
-  --module = "persisted", -- For lazy loading
-  config = function()
-    require("persisted").setup()
-    require("telescope").load_extension("persisted") -- To load the telescope extension
-  end,
+    "olimorris/persisted.nvim",
+    module = "persisted", -- For lazy loading
+    config = function()
+      require("persisted").setup()
+      require("telescope").load_extension("persisted") -- To load the telescope extension
+    end,
   })
 
   -- Colorschemes
-  use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  --[[ use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out ]]
   use 'folke/tokyonight.nvim' -- 经典主题
-  use "lunarvim/darkplus.nvim"
+  --[[ use "lunarvim/darkplus.nvim" ]]
   use "tomasr/molokai" -- molokai
-  -- use "morhetz/gruvbox" -- gruvbox
   use "ellisonleao/gruvbox.nvim" --gruvbox
   use 'tanvirtin/monokai.nvim' -- monokai
+  use "navarasu/onedark.nvim"  -- onedark
 
   -- completion
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -113,22 +113,33 @@ return packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   use 'kyazdani42/nvim-tree.lua'
 
+  -- Markdonw Preview
+  use "davidgranstrom/nvim-markdown-preview"
+
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  --[[ use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters ]]
   use "folke/trouble.nvim" --  A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+
+  use {
+    'Kohirus/cppassist.nvim',
+    opt = true,
+    ft = { "h", "cpp", "hpp", "c", "cc", "cxx" },
+    config = function()
+      require("cppassist").setup()
+    end,
+  }
 
   use "p00f/clangd_extensions.nvim" -- 不知道好不好用，尝试一下
   use "ray-x/lsp_signature.nvim"
-  -- use "kosayoda/nvim-lightbulb" -- code action 会有💡提示
+  use "kosayoda/nvim-lightbulb" -- code action 会有💡提示
   use "antoinemadec/FixCursorHold.nvim" -- nvim-lightbulb 的依赖
   use "folke/lsp-colors.nvim" -- 提示（错误提示、灯泡提示）
-
-  -- use {
-  --   "tenfyzhong/vim-gencode-cpp",
-  --   requires = "vim-scripts/a.vim",
-  -- }
+  use {
+  'weilbith/nvim-code-action-menu',
+  cmd = 'CodeActionMenu',
+  }
 
   -- Rename
   -- use {
@@ -148,20 +159,15 @@ return packer.startup(function(use)
   use "abecodes/tabout.nvim"
 
   -- 运行代码段
-  --[[ use { "michaelb/sniprun", run = "zsh ./install.sh" } ]]
+  use { "michaelb/sniprun", run = "zsh ./install.sh" }
 
   -- waketime
   use "wakatime/vim-wakatime"
 
-  --[[
-  use {
-    "weilbith/nvim-code-action-menu",
-    cmd = "CodeActionMenu",
-  }
-  --]]
-
   --CMake
   --[[ use "ravenxrz/neovim-cmake" ]]
+  use "Civitasv/cmake-tools.nvim"
+
   --gtags
   --use "jsfaint/gen_tags.vim"
 
@@ -175,9 +181,7 @@ return packer.startup(function(use)
   use 'theHamsta/nvim-dap-virtual-text'
 
   -- Outline
-  --use "stevearc/aerial.nvim"
-    use "simrat39/symbols-outline.nvim" -- tree-like symbol outline
-  --use "liuchengxu/vista.vim"
+  use "simrat39/symbols-outline.nvim" -- tree-like symbol outline
 
   -- Telescope
   use "nvim-telescope/telescope.nvim" --
@@ -240,17 +244,11 @@ return packer.startup(function(use)
   -- beautiful notify
   use "rcarriga/nvim-notify"
 
-  -- turn you browser to neovim
-  use {
-    'glacambre/firenvim',
-    run = function() vim.fn['firenvim#install'](0) end
-  }
-
   -- 翻译
   -- use "voldikss/vim-translator"
 
   -- smooth scrolling
-  -- use 'karb94/neoscroll.nvim'
+  use 'karb94/neoscroll.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

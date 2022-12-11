@@ -31,7 +31,7 @@ cmake.setup({
   default_projects_path = tostring(Path:new(vim.loop.os_homedir(), 'Projects')), -- Default folder for creating project.
   configure_args = { '-D', 'CMAKE_EXPORT_COMPILE_COMMANDS=1' }, -- Default arguments that will be always passed at cmake configure step. By default tells cmake to generate `compile_commands.json`.
   build_args = {
-    '-j8',
+    '-j12',
   }, -- Default arguments that will be always passed at cmake build step.
   on_build_output = nil, -- Callback which will be called on every line that is printed during build process. Accepts printed line as argument.
   quickfix_height = 10, -- Height of the opened quickfix.
