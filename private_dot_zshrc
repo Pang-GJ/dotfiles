@@ -162,8 +162,13 @@ source ~/.config/broot/launcher/bash/br
 eval $(thefuck --alias)
 
 # default C++ compiler: clang
-export CC=clang
-export CXX=clang++
+export CC=gcc
+export CXX=g++
+
+# vcpkg
+export VCPKG_DOWNLOADS=$HOME/.cache/vcpkg/
+export VCPKG_ROOT=$HOME/CodeField/CPP/vcpkg
+export PATH=$PATH:$VCPKG_ROOT
 
 # enable conda for current user 
 source /opt/miniconda/etc/profile.d/conda.sh
