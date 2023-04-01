@@ -20,7 +20,6 @@ require "user.colorscheme"
 
 require "user.lsp"
 
-require "user.dap"
 
 require "user.plugins"
 require "user.plugins_conf"

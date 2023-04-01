@@ -476,7 +476,7 @@ pcall(vim.api.nvim_create_user_command, 'CodeActionMenu', function(cmdargs)
           require('packer.load')({'nvim-code-action-menu'}, { cmd = 'CodeActionMenu', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-code-action-menu'}, { cmd = 'CodeActionMenu' }, _G.packer_plugins)
+          require('packer.load')({'nvim-code-action-menu'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('CodeActionMenu ', 'cmdline')
       end})
 time([[Defining lazy-load commands]], false)
@@ -485,12 +485,12 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType cc ++once lua require("packer.load")({'cppassist.nvim'}, { ft = "cc" }, _G.packer_plugins)]]
 vim.cmd [[au FileType h ++once lua require("packer.load")({'cppassist.nvim'}, { ft = "h" }, _G.packer_plugins)]]
-vim.cmd [[au FileType hpp ++once lua require("packer.load")({'cppassist.nvim'}, { ft = "hpp" }, _G.packer_plugins)]]
-vim.cmd [[au FileType cpp ++once lua require("packer.load")({'cppassist.nvim'}, { ft = "cpp" }, _G.packer_plugins)]]
 vim.cmd [[au FileType cxx ++once lua require("packer.load")({'cppassist.nvim'}, { ft = "cxx" }, _G.packer_plugins)]]
 vim.cmd [[au FileType c ++once lua require("packer.load")({'cppassist.nvim'}, { ft = "c" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cpp ++once lua require("packer.load")({'cppassist.nvim'}, { ft = "cpp" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cc ++once lua require("packer.load")({'cppassist.nvim'}, { ft = "cc" }, _G.packer_plugins)]]
+vim.cmd [[au FileType hpp ++once lua require("packer.load")({'cppassist.nvim'}, { ft = "hpp" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 
