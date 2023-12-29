@@ -1,0 +1,6 @@
+/home/pgj/miniconda3
+/home/pgj/miniconda3/envs/pc
+/home/pgj/miniconda3/envs/Pytorch
+/home/pgj/miniconda3/envs/Flask
+/home/pgj/miniconda3/envs/modelscope
+/home/pgj/miniconda3/envs/torch_debug
