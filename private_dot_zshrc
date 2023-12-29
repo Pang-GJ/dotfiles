@@ -157,7 +157,6 @@ fi
 
 eval "$(zoxide init zsh)"
 
-source ~/.config/broot/launcher/bash/br
 
 eval $(thefuck --alias)
 
@@ -170,8 +169,17 @@ export VCPKG_DOWNLOADS=$HOME/.cache/vcpkg/
 export VCPKG_ROOT=$HOME/CodeField/CPP/vcpkg
 export PATH=$PATH:$VCPKG_ROOT
 
+# go
+export PATH=$PATH:/usr/local/go/bin
+
+# WSL: use `code .` to open VSCode in WSL
+export PATH="$PATH:/mnt/c/Users/Pang-GJ/AppData/Local/Programs/Microsoft VS Code/bin"
+# WSL: explorer.exe
+alias explorer.exe="/mnt/c/Windows/explorer.exe"
+alias parsec.exe="/mnt/c/Program\ Files/Parsec/parsecd.exe"
+
 # enable conda for current user 
-source /opt/miniconda/etc/profile.d/conda.sh
+# source /opt/miniconda/etc/profile.d/conda.sh
 
 function taskpp() {
   case "$1" in 
@@ -201,3 +209,58 @@ function taskpp() {
       ;;
   esac 
 }
+# >>> xmake >>>
+test -f "/home/pgj/.xmake/profile" && source "/home/pgj/.xmake/profile"
+# <<< xmake <<<
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/pgj/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/pgj/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/pgj/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/pgj/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+# core dump
+ulimit -c unlimited
+
+# bun completions
+[ -s "/home/pgj/.bun/_bun" ] && source "/home/pgj/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# add FlameGraph
+export PATH=$PATH:~/.local/share/FlameGraph
+
+# rustproxy
+export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+source "$HOME/.cargo/env"
+
+# qemu
+export PATH="$HOME/os-env/qemu-7.0.0/build/:$PATH"
+export PATH="$HOME/os-env/qemu-7.0.0/build/riscv64-softmmu:$PATH"
+export PATH="$HOME/os-env/qemu-7.0.0/build/riscv64-linux-user:$PATH"
+
+# cuda
+export PATH="/usr/local/cuda/bin/:$PATH"
+
+# dotnet
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
